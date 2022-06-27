@@ -41,6 +41,12 @@ class Authenticator:
 
         :returns: str: access token
         """
+        current_time = time()
+        print(f"self.access_token_expiration: {self.access_token_expiration} current_time: {current_time}")
+        print(f"\tdelta: {int(self.access_token_expiration - current_time)}")
+        if self.access_token_expiration > current_time:
+            print(f"\treturning existing access token")
+            return self.oauth_token_response['access_token']
         data = {
             'refresh_token': self.oauth_token_response['refresh_token'],
             'grant_type': 'refresh_token',
