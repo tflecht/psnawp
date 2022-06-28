@@ -42,7 +42,7 @@ class Authenticator:
         :returns: str: access token
         """
         current_time = time()
-        if self.access_token and self.access_token_expiration > current_time:
+        if self.access_token_expiration and self.access_token_expiration > current_time:
             return self.oauth_token_response['access_token']
         data = {
             'refresh_token': self.oauth_token_response['refresh_token'],
