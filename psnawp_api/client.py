@@ -57,7 +57,7 @@ class Client:
         limit = min(1000, limit)
 
         params = {'limit': limit}
-        base_uri = 'https://m.np.playstation.net/api/userProfile/v1/internal/users'
+        base_uri = 'https://m.np.playstation.com/api/userProfile/v1/internal/users'
         response = self.request_builder.get(
             url='{}/me/friends'.format(base_uri), params=params)
         return response['friends']
@@ -128,7 +128,7 @@ class Client:
 
         :returns: List: Account ID of all blocked users on your block list
         """
-        base_uri = 'https://m.np.playstation.net/api/userProfile/v1/internal/users'
+        base_uri = 'https://m.np.playstation.com/api/userProfile/v1/internal/users'
         response = self.request_builder.get(
             url='{}/me/blocks'.format(base_uri))
         return response['blockList']

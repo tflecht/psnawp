@@ -5,8 +5,8 @@ from psnawp_api import psnawp_exceptions
 # Class User
 # This class will contain the information about the PSN ID you passed in when creating object
 class User:
-    base_uri = 'https://m.np.playstation.net/api/userProfile/v1/internal/users'
-    trophy_base_uri = 'https://m.np.playstation.net/api/trophy'
+    base_uri = 'https://m.np.playstation.com/api/userProfile/v1/internal/users'
+    trophy_base_uri = 'https://m.np.playstation.com/api/trophy'
 
     def __init__(self, request_builder, client, online_id, account_id):
         """
@@ -44,7 +44,7 @@ class User:
         if len(online_id) <= 0:
             raise psnawp_exceptions.PSNAWPIllegalArgumentError(
                 'online_id must contain a value.')
-        base_uri = "https://us-prof.np.community.playstation.net/userProfile/v1/users"
+        base_uri = "https://us-prof.np.community.playstation.com/userProfile/v1/users"
         param = {'fields': 'accountId,onlineId,currentOnlineId'}
         response = self.request_builder.get(
             url="{}/{}/profile2".format(base_uri, online_id), params=param)
@@ -80,7 +80,7 @@ class User:
         Returns:
             dict: profile dictionary
         """
-        url = f"https://us-prof.np.community.playstation.net/userProfile/v1/users/{self.online_id}/profile2"
+        url = f"https://us-prof.np.community.playstation.com/userProfile/v1/users/{self.online_id}/profile2"
 
         params = {
             "fields": "npId,onlineId,accountId,avatarUrls,plus,aboutMe,languagesUsed,trophySummary(@default,level,progress,earnedTrophies),isOfficiallyVerified,personalDetail(@default,profilePictureUrls),personalDetailSharing,personalDetailSharingRequestMessageFlag,primaryOnlineStatus,presences(@default,@titleInfo,platform,lastOnlineDate,hasBroadcastData),requestMessageFlag,blocking,friendRelation,following,consoleAvailability"
